@@ -6,4 +6,10 @@ Jenkins plugins must install
 - sonarqube scanner
 - nodejs
 
+Manage Jenkins > tools **Configuration** 
+- jdk17 version    : jdk-17.0.11+9
+- sonar-scanner    : default version
+- nodejs16 version : NodeJS 16.20.2
+
+
 
