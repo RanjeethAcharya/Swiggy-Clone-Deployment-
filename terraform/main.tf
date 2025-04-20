@@ -1,13 +1,9 @@
-provider "aws" {
-  region = "us-east-1"
-}
-
 resource "aws_instance" "web" {
   ami                    = "ami-0fc5d935ebf8bc3bc"   #change ami id for different region
   instance_type          = "t2.large"
-  key_name               = "dell.pem"
+  key_name               = "dell"
   vpc_security_group_ids = [aws_security_group.Jenkins-sg.id]
-  user_data              = templatefile("./install.sh", {})
+  user_data              = "${file("install.sh")}"
 
   tags = {
     Name = "Jenkins-sonarqube-trivy-vm"
@@ -17,6 +13,10 @@ resource "aws_instance" "web" {
     volume_size = 30
   }
 }
+
+# data "template_file" "user_data" {
+#   template = file("install.sh")
+# }
 
 resource "aws_security_group" "Jenkins-sg" {
   name        = "Jenkins-sg"
