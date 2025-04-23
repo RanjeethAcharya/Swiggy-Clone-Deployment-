@@ -1,0 +1,85 @@
+pipeline {
+    agent any 
+
+    tools {
+        jdk 'jdk17'
+        nodejs 'nodejs16'
+    }
+
+    environment {
+        SCANNER = tool 'sonarqube'
+        DOCKER_PASS = credentials('docker-pass')
+        // Uncomment and set if needed
+        // APP_NAME = 'swiggy'
+        // RELEASE = "1.0"
+        // IMAGE_NAME = "${DOCKER_USER}/${APP_NAME}"
+        // IMAGE_TAG = "${RELEASE}-${BUILD_NUMBER}"
+    }
+
+    stages {
+        stage('Git Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/RanjeethAcharya/Swiggy-Clone-Deployment-.git'
+            }
+        }
+
+        stage('SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv('sonarqube') {
+                    sh """
+                        ${SCANNER}/bin/sonar-scanner \
+                        -Dsonar.projectName=Swiggy-CICD \
+                        -Dsonar.projectKey=Swiggy-CICD
+                    """
+                }
+            }
+        }
+
+        /*
+        stage('Quality Gates') {
+            steps {
+                script {
+                    waitForQualityGate abortPipeline: false, credentialsId: 'sonar-token'
+                }
+            }
+        }
+        */
+
+        stage('Dependency Installation') {
+            steps {
+                sh "npm install"
+            }
+        }
+
+        // stage('OWASP Dependency Check') {
+        //     steps {
+        //         dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit', odcInstallation: 'DC'
+        //         dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
+        //     }
+        // }
+
+        stage('Trivy Filesystem Scan') {
+            steps {
+                sh "trivy fs . > trivy-fs.txt"
+            }
+        }
+
+        stage('Docker Build & Push') {
+            steps {
+                withDockerRegistry([credentialsId: 'docker-pass', url: 'https://index.docker.io/v1/']) {
+                    sh """
+                        docker build -t swiggy-app . 
+                        docker tag swiggy-app ranjeeth2oo233/swiggy-app:latest
+                        docker push ranjeeth2oo233/swiggy-app:latest
+                    """
+                }
+            }
+        }
+
+        stage('Trivy Image Scan') {
+            steps {
+                sh "trivy image ranjeeth2oo233/swiggy-app:latest > trivy-img.txt"
+            }
+        }
+    }
+}
