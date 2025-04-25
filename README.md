@@ -26,3 +26,6 @@ Install the below given links
 - Kubectl : https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/ 
 - EKSCTL  : https://eksctl.io/installation/
 
+For ArgoCD installation refer below given README file
+https://github.com/RanjeethAcharya/Swiggy-Clone-Deployment-/blob/main/ArgoCD/README.md
+(https://github.com/RanjeethAcharya/Swiggy-Clone-Deployment-/blob/main/ArgoCD/README.md)
