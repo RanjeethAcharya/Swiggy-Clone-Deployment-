@@ -25,6 +25,4 @@ Install the below given links
 - AWSCLI  : https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
 - Kubectl : https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/ 
 - EKSCTL  : https://eksctl.io/installation/
-
-For ArgoCD installation refer below given README file
-- ArgoCD  : https://github.com/RanjeethAcharya/Swiggy-Clone-Deployment-/blob/main/ArgoCD/README.md
+- ArgoCD  : https://argo-cd.readthedocs.io/en/stable/getting_started/
