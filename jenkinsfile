@@ -9,11 +9,6 @@ pipeline {
     environment {
         SCANNER = tool 'sonarqube'
         DOCKER_PASS = credentials('docker-pass')
-        // Uncomment and set if needed
-        // APP_NAME = 'swiggy'
-        // RELEASE = "1.0"
-        // IMAGE_NAME = "${DOCKER_USER}/${APP_NAME}"
-        // IMAGE_TAG = "${RELEASE}-${BUILD_NUMBER}"
     }
 
     stages {
@@ -35,7 +30,6 @@ pipeline {
             }
         }
 
-        /*
         stage('Quality Gates') {
             steps {
                 script {
@@ -43,7 +37,6 @@ pipeline {
                 }
             }
         }
-        */
 
         stage('Dependency Installation') {
             steps {
@@ -51,12 +44,12 @@ pipeline {
             }
         }
 
-        // stage('OWASP Dependency Check') {
-        //     steps {
-        //         dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit', odcInstallation: 'DC'
-        //         dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
-        //     }
-        // }
+        stage('OWASP Dependency Check') {
+            steps {
+                dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit', odcInstallation: 'DC'
+                dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
+            }
+        }
 
         stage('Trivy Filesystem Scan') {
             steps {
