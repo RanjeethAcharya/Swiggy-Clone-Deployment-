@@ -1,5 +1,7 @@
-# Swiggy-Clone-Deployment-
-** Swiggy Clone Deployment using Terraform, Jenkins, ArgoCD, SonarQube, Trivy cube and AWS EKS**
+# Swiggy-Clone-Deployment
+Deploying using Terraform, Jenkins, ArgoCD, and AWS EKS
+![image](https://github.com/user-attachments/assets/b96c6124-3c7f-4ab6-9470-15f042e2167e)
+
 
 **Jenkins plugins must install**
 - Eclipse temurin
