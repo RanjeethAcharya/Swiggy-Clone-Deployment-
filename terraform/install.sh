@@ -13,7 +13,6 @@ echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]" \
   /etc/apt/sources.list.d/jenkins.list > /dev/null
 sudo apt-get update
 sudo apt-get install jenkins -y
-sudo usermod -aG docker jenkins
 
 sudo apt-get update
 sudo apt-get install -y ca-certificates curl
@@ -24,6 +23,11 @@ echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
   $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo usermod -aG docker jenkins
+sudo chown root:docker /var/run/docker.sock
+sudo chmod 660 /var/run/docker.sock
+systemctl restart jenkins
+systemctl restart docker
 
 sudo apt-get update
 sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
