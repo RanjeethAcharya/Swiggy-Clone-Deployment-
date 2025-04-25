@@ -19,7 +19,7 @@ Deploying using Terraform, Jenkins, ArgoCD, and AWS EKS
 
 Install the below given links
 
-AWSCLI  : https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
-Kubectl : https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/ 
-EKSCTL  : https://eksctl.io/installation/
+- AWSCLI  : https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
+- Kubectl : https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/ 
+- EKSCTL  : https://eksctl.io/installation/
 
