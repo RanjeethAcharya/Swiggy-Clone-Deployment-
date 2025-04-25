@@ -15,7 +15,7 @@ Deploying using Terraform, Jenkins, ArgoCD, and AWS EKS
 - sonar-scanner    : default version
 - nodejs16 version : NodeJS 16.20.2
 
-**After completing CI task start setting up AWS CLI, Kubectl, EKSCTL and ArgoCD**
+**After completing CI task, Start setting up AWS CLI, Kubectl, EKSCTL and ArgoCD**
 
 Install the below given links
 
