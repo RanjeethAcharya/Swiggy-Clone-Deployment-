@@ -11,12 +11,12 @@ Deploying using Terraform, Jenkins, ArgoCD, and AWS EKS
 - Docker and Docker Commons, Docker pipeline
 
 **Manage Jenkins > tools **Configuration**
-- jdk17            : jdk-17.0.11+9
-- sonarqube        : default version
-- nodejs16         : NodeJS 16.20.2
-- docker           : Latest
+- **jdk17**            : jdk-17.0.11+9
+- **sonarqube**        : default version
+- **nodejs16**         : NodeJS 16.20.2
+- **docker**           : Latest
 - Dependency-Check
-  DC               : install automatically 
+  **DC**               : install automatically 
 
 **After completing CI task, Start setting up AWS CLI, Kubectl, EKSCTL and ArgoCD**
 
