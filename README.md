@@ -27,5 +27,4 @@ Install the below given links
 - EKSCTL  : https://eksctl.io/installation/
 
 For ArgoCD installation refer below given README file
-https://github.com/RanjeethAcharya/Swiggy-Clone-Deployment-/blob/main/ArgoCD/README.md
-(https://github.com/RanjeethAcharya/Swiggy-Clone-Deployment-/blob/main/ArgoCD/README.md)
+- https://github.com/RanjeethAcharya/Swiggy-Clone-Deployment-/blob/main/ArgoCD/README.md
