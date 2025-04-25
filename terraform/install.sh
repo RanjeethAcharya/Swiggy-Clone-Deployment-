@@ -13,6 +13,7 @@ echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]" \
   /etc/apt/sources.list.d/jenkins.list > /dev/null
 sudo apt-get update
 sudo apt-get install jenkins -y
+sudo usermod -aG docker jenkins
 
 sudo apt-get update
 sudo apt-get install -y ca-certificates curl
